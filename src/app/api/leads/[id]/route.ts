@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { supabase } from '@/lib/supabase';
 
-export const dynamic = "force-dynamic"; // ← this is what's missing from this file
+export const dynamic = "force-dynamic"; 
 
 export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url);
