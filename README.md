@@ -75,9 +75,9 @@ cp .env.local.example .env.local
 Edit `.env.local` and fill in your values:
 
 ```env
-NEXT_PUBLIC_SUPABASE_URL=https://beypxrijhgypuxcsqdrb.supabase.co
-NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJleXB4cmlqaGd5cHV4Y3NxZHJiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzI5MjAxMTgsImV4cCI6MjA4ODQ5NjExOH0.Jmq1kwezh_Tw0ANO7fr6pl29nE76hmUGdaAhFvkPm-w
-GROQ_API_KEY=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
+NEXT_PUBLIC_SUPABASE_URL=https://project-id.supabase.co
+NEXT_PUBLIC_SUPABASE_ANON_KEY=anon-key
+GROQ_API_KEY=groq-api-key
 ```
 
 ### 6. Run locally
