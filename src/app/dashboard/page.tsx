@@ -185,7 +185,7 @@ function LeadCard({
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ reviewed: !lead.reviewed }),
       });
-      if (res.ok) onToggleReviewed(lead.id, !lead.reviewACed);
+      if (res.ok) onToggleReviewed(lead.id, !lead.reviewed);
     } finally {
       setToggling(false);
     }
@@ -256,7 +256,7 @@ function LeadCard({
         <CategoryBadge category={lead.ai_category} />
       </div>
 
-      {/* AI Summary */}
+      {/* AI Summaries */}
       <div
         style={{
           background: 'var(--cream)',
