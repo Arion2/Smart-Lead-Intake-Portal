@@ -1,26 +1,33 @@
+export const dynamic = 'force-dynamic';
+
 import { NextRequest, NextResponse } from 'next/server';
 import { supabase } from '@/lib/supabase';
 
-export const dynamic = "force-dynamic"; 
+export async function PATCH(
+  req: NextRequest,
+  { params }: { params: { id: string } }
+) {
+  try {
+    const { reviewed } = await req.json();
+    if (typeof reviewed !== 'boolean') {
+      return NextResponse.json({ error: 'reviewed must be a boolean' }, { status: 400 });
+    }
 
-export async function GET(request: NextRequest) {
-  const { searchParams } = new URL(request.url);
-  const category = searchParams.get('category');
+    const { data, error } = await supabase
+      .from('leads')
+      .update({ reviewed })
+      .eq('id', params.id)
+      .select()
+      .single();
 
-  let query = supabase
-    .from('leads')
-    .select('*')
-    .order('created_at', { ascending: false });
+    if (error) {
+      console.error('Supabase update error:', error);
+      return NextResponse.json({ error: 'Failed to update lead.' }, { status: 500 });
+    }
 
-  if (category && category !== 'All') {
-    query = query.eq('category', category);
+    return NextResponse.json({ lead: data });
+  } catch (err) {
+    console.error('Toggle reviewed error:', err);
+    return NextResponse.json({ error: 'Unexpected error.' }, { status: 500 });
   }
-
-  const { data, error } = await query;
-
-  if (error) {
-    return NextResponse.json({ error: error.message }, { status: 500 });
-  }
-
-  return NextResponse.json(data);
 }
