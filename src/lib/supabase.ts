@@ -14,5 +14,6 @@ export type Lead = {
   help_text: string;
   ai_summary: string;
   ai_category: string;
+  reviewed: boolean;
   created_at: string;
 };

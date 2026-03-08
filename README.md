@@ -3,14 +3,14 @@
 A smart lead intake system that uses AI to automatically categorize and summarize client submissions, stores them in a database, and displays them on a filterable dashboard.
 
 **Live Demo:** [your-vercel-url.vercel.app]  
-**Repo:** [your-github-url]
+**Repo:** [https://github.com/Arion2/Smart-Lead-Intake-Portal](https://github.com/Arion2/Smart-Lead-Intake-Portal)
 
 ---
 
 ## Features
 
 - **Intake Form** — Clean, validated form collecting name, email, business name, industry, and a free-text project description
-- **AI Categorization** — Each submission is instantly analyzed by Google Gemini, which generates a one-sentence summary and assigns a category (Automation, Website, AI Integration, SEO, Custom Software, Other)
+- **AI Categorization** — Each submission is instantly analyzed by Groq (Llama 3.1), which generates a one-sentence summary and assigns a category (Automation, Website, AI Integration, SEO, Custom Software, Other)
 - **Supabase Storage** — All data is persisted in a Postgres database via Supabase
 - **Dashboard** — Real-time view of all submissions, filterable by AI category, with expandable full request text
 - **Error handling** — Client-side validation, server-side validation, graceful AI/DB failure messages
@@ -26,7 +26,7 @@ A smart lead intake system that uses AI to automatically categorize and summariz
 | Language | TypeScript |
 | Styling | Tailwind CSS + CSS custom properties |
 | Database | Supabase (PostgreSQL) |
-| AI | Google Gemini 1.5 Flash (free tier) |
+| AI | Groq — Llama 3.1 8B Instant (free tier) |
 | Hosting | Vercel |
 
 ---
@@ -37,13 +37,13 @@ A smart lead intake system that uses AI to automatically categorize and summariz
 
 - Node.js 18+
 - A [Supabase](https://supabase.com) account (free)
-- A [Google AI Studio](https://aistudio.google.com) account (free Gemini API key)
+- A [Groq](https://console.groq.com) account (free API key)
 
 ### 1. Clone the repo
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/lead-intake-portal.git
-cd lead-intake-portal
+git clone https://github.com/Arion2/Smart-Lead-Intake-Portal.git
+cd Smart-Lead-Intake-Portal
 ```
 
 ### 2. Install dependencies
@@ -60,10 +60,10 @@ npm install
    - `Project URL`
    - `anon public` key
 
-### 4. Get your Gemini API key
+### 4. Get your Groq API key
 
-1. Go to [Google AI Studio](https://aistudio.google.com/app/apikey)
-2. Click **Create API key**
+1. Go to [console.groq.com](https://console.groq.com)
+2. Click **API Keys** → **Create API key**
 3. Copy the key
 
 ### 5. Configure environment variables
@@ -77,7 +77,7 @@ Edit `.env.local` and fill in your values:
 ```env
 NEXT_PUBLIC_SUPABASE_URL=https://your-project-id.supabase.co
 NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key
-GEMINI_API_KEY=your-gemini-api-key
+GROQ_API_KEY=your-groq-api-key
 ```
 
 ### 6. Run locally
@@ -97,7 +97,7 @@ Open [http://localhost:3000](http://localhost:3000) — the intake form is the h
 3. Add the three environment variables in **Project Settings → Environment Variables**:
    - `NEXT_PUBLIC_SUPABASE_URL`
    - `NEXT_PUBLIC_SUPABASE_ANON_KEY`
-   - `GEMINI_API_KEY`
+   - `GROQ_API_KEY`
 4. Deploy — Vercel auto-detects Next.js, no build config needed
 
 ---
@@ -108,7 +108,7 @@ Open [http://localhost:3000](http://localhost:3000) — the intake form is the h
 |---|---|---|
 | `NEXT_PUBLIC_SUPABASE_URL` | Your Supabase project URL | Supabase → Project Settings → API |
 | `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Supabase anonymous public key | Supabase → Project Settings → API |
-| `GEMINI_API_KEY` | Google Gemini API key | [aistudio.google.com/app/apikey](https://aistudio.google.com/app/apikey) |
+| `GROQ_API_KEY` | Groq API key | [console.groq.com](https://console.groq.com) → API Keys |
 
 > **Note:** Never commit `.env.local` to version control. It is listed in `.gitignore`.
 
@@ -127,7 +127,7 @@ src/
 │   ├── layout.tsx             # Root layout with fonts
 │   └── page.tsx               # Intake form (home page)
 ├── lib/
-│   ├── ai.ts                  # Gemini API helper
+│   ├── ai.ts                    # Groq API helper (Llama 3.1)
 │   └── supabase.ts            # Supabase client + types
 supabase-schema.sql            # DB schema to run once in Supabase
 ```
