@@ -2,7 +2,7 @@
 
 A smart lead intake system that uses AI to automatically categorize and summarize client submissions, stores them in a database, and displays them on a filterable dashboard.
 
-**Live Demo:** [your-vercel-url.vercel.app]  
+**Live Demo:** [https://smart-lead-app.vercel.app/]  
 **Repo:** [https://github.com/Arion2/Smart-Lead-Intake-Portal](https://github.com/Arion2/Smart-Lead-Intake-Portal)
 
 ---
@@ -75,9 +75,9 @@ cp .env.local.example .env.local
 Edit `.env.local` and fill in your values:
 
 ```env
-NEXT_PUBLIC_SUPABASE_URL=https://your-project-id.supabase.co
-NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key
-GROQ_API_KEY=your-groq-api-key
+NEXT_PUBLIC_SUPABASE_URL=https://beypxrijhgypuxcsqdrb.supabase.co
+NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJleXB4cmlqaGd5cHV4Y3NxZHJiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzI5MjAxMTgsImV4cCI6MjA4ODQ5NjExOH0.Jmq1kwezh_Tw0ANO7fr6pl29nE76hmUGdaAhFvkPm-w
+GROQ_API_KEY=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
 ```
 
 ### 6. Run locally
@@ -106,8 +106,8 @@ Open [http://localhost:3000](http://localhost:3000) — the intake form is the h
 
 | Variable | Description | Where to get it |
 |---|---|---|
-| `NEXT_PUBLIC_SUPABASE_URL` | Your Supabase project URL | Supabase → Project Settings → API |
-| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Supabase anonymous public key | Supabase → Project Settings → API |
+| `NEXT_PUBLIC_SUPABASE_URL` | Supabase project URL |
+| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Supabase anonymous public key | 
 | `GROQ_API_KEY` | Groq API key | [console.groq.com](https://console.groq.com) → API Keys |
 
 > **Note:** Never commit `.env.local` to version control. It is listed in `.gitignore`.
