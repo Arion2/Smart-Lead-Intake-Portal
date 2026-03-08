@@ -344,7 +344,7 @@ export default function HomePage() {
                 type="text"
                 value={form.name}
                 onChange={handleChange}
-                placeholder="Jane Smith"
+                placeholder="Your name"
                 className={`field-input ${errors.name ? 'error' : ''}`}
                 autoComplete="name"
               />
@@ -362,7 +362,7 @@ export default function HomePage() {
                 type="email"
                 value={form.email}
                 onChange={handleChange}
-                placeholder="jane@company.com"
+                placeholder="name@example.com"
                 className={`field-input ${errors.email ? 'error' : ''}`}
                 autoComplete="email"
               />
@@ -384,7 +384,7 @@ export default function HomePage() {
                 type="text"
                 value={form.business_name}
                 onChange={handleChange}
-                placeholder="Acme Corp"
+                placeholder="Your Company Name"
                 className={`field-input ${errors.business_name ? 'error' : ''}`}
                 autoComplete="organization"
               />
