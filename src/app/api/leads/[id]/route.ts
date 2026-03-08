@@ -1,45 +1,26 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { supabase } from '@/lib/supabase';
 
-export const dynamic = "force-dynamic";
+export const dynamic = "force-dynamic"; // ← this is what's missing from this file
 
-export async function PATCH(
-  req: NextRequest,
-  { params }: { params: { id: string } }
-) {
-  try {
-    const body = await req.json();
-    const { reviewed } = body;
+export async function GET(request: NextRequest) {
+  const { searchParams } = new URL(request.url);
+  const category = searchParams.get('category');
 
-    if (typeof reviewed !== 'boolean') {
-      return NextResponse.json(
-        { error: 'reviewed must be a boolean' },
-        { status: 400 }
-      );
-    }
+  let query = supabase
+    .from('leads')
+    .select('*')
+    .order('created_at', { ascending: false });
 
-    const { data, error } = await supabase
-      .from('leads')
-      .update({ reviewed })
-      .eq('id', params.id)
-      .select()
-      .single();
-
-    if (error) {
-      console.error('Supabase update error:', error);
-      return NextResponse.json(
-        { error: 'Failed to update lead.' },
-        { status: 500 }
-      );
-    }
-
-    return NextResponse.json({ lead: data });
-
-  } catch (err) {
-    console.error('Toggle reviewed error:', err);
-    return NextResponse.json(
-      { error: 'Unexpected error.' },
-      { status: 500 }
-    );
+  if (category && category !== 'All') {
+    query = query.eq('category', category);
   }
+
+  const { data, error } = await query;
+
+  if (error) {
+    return NextResponse.json({ error: error.message }, { status: 500 });
+  }
+
+  return NextResponse.json(data);
 }
