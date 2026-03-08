@@ -185,7 +185,7 @@ function LeadCard({
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ reviewed: !lead.reviewed }),
       });
-      if (res.ok) onToggleReviewed(lead.id, !lead.revieweed);
+      if (res.ok) onToggleReviewed(lead.id, !lead.reviewed);
     } finally {
       setToggling(false);
     }
